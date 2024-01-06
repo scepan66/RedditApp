@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:action="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>For creating posts and upvoting you need to be logged in</h1>
+<form method="POST" action="/login">
+    <input type="text" name="username" placeholder="username">
+    <input type="password" name="password" placeholder="password">
+    <input type="submit" value="Login">
+</form>
+<h2>Dont have account yet? <a href="/register">Create account</a></h2>
+</body>
+</html>

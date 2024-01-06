@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ThE ReDdIt</title>
+</head>
+<body>
+<h1>rEdDiT</h1>
+<div>
+    <a th:href="|/submit?user=${username}|">Submit new post</a>
+    <form method="POST" action="/login" th:if="${username}==null">
+        <input type="text" name="username" placeholder="username">
+        <input type="password" name="password" placeholder="password">
+        <input type="submit" value="Login">
+    </form>
+    <a href="/register">Create account</a>
+</div>
+<table>
+    <tbody th:each="post: ${posts}">
+    <tr>
+        <td th:text="${post.getVote().getNumberOfVotes()}"></td>
+        <td><a th:href="|/${post.getId()}/upVote?user=${username}|">+</a></td>
+        <td><a th:href="|/${post.getId()}/downVote?user=${username}|">-</a></td>
+        <td><a th:href="${post.getUrl()}" th:text="${post.getName()}"></a></td>
+        <td th:text="${post.getDescription()}"></td>
+        <td th:text="${post.getUser().getUsername()}"></td>
+        <td th:if="${username} == ${post.getUser().getUsername()}"><a th:href="|${post.getId()}/edit?user=${username}|">Edit post</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

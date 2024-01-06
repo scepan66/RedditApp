@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:action="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Invalid registration</title>
+</head>
+<body>
+<h1>Create new account</h1>
+<form method="POST" action="/register">
+    <label for="username">Set username</label>
+    <input type="text" name="username" id="username" minlength="1"><br>
+    <label for="email">Set email</label>
+    <input type="text" name="email" id="email"><br>
+    <label for="password">Set password</label>
+    <input type="password" name="password" id="password"><br>
+    <input type="submit" value="Create new account">
+</form>
+<a href="/">Cancel</a>
+<h2 th:if="${invalidUsername}" style="color: red">User with that username already exists. Try another</h2>
+<h2 th:if="${invalidMail}" style="color: red">User with that email already exist. Try another</h2>
+</body>
+</html>
